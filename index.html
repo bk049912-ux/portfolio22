@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IT & SDGs in India</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+:root{
+    --green:#16c784;
+    --blue:#2196f3;
+    --gold:#ffc107;
+    --dark:#06130e;
+    --card:#0d2118;
+    --text:#f1fff8;
+    --muted:#a8c5b8;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--dark);
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+body.light{
+    --dark:#f4fbf7;
+    --card:#ffffff;
+    --text:#10231b;
+    --muted:#587066;
+}
+
+/* PARTICLES */
+
+#particles{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    padding:15px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(15px);
+    background:rgba(6,19,14,.75);
+    border-bottom:1px solid rgba(255,255,255,.1);
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+    color:white;
+}
+
+.logo span{
+    color:var(--green);
+}
+
+nav ul{
+    display:flex;
+    gap:25px;
+    list-style:none;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:14px;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:var(--green);
+}
+
+.theme{
+    border:1px solid var(--green);
+    background:none;
+    color:var(--green);
+    padding:8px 12px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    min-height:100vh;
+    padding:140px 8% 80px;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    align-items:center;
+    gap:50px;
+}
+
+.badge{
+    display:inline-block;
+    padding:9px 15px;
+    border:1px solid var(--green);
+    border-radius:30px;
+    color:var(--green);
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:clamp(45px,7vw,80px);
+    line-height:1;
+    margin-bottom:25px;
+}
+
+.hero h1 span{
+    color:var(--green);
+}
+
+.hero p{
+    color:var(--muted);
+    font-size:18px;
+    line-height:1.8;
+    max-width:700px;
+}
+
+.buttons{
+    margin-top:30px;
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    padding:14px 22px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:bold;
+    display:inline-block;
+}
+
+.primary{
+    background:var(--green);
+    color:#06130e;
+}
+
+.secondary{
+    border:1px solid var(--green);
+    color:var(--green);
+}
+
+/* EARTH */
+
+.earth-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.earth{
+    width:330px;
+    height:330px;
+    border-radius:50%;
+    background:
+    radial-gradient(circle at 30% 30%,
+    #7affc4,
+    #159c68 35%,
+    #075238 65%,
+    #021c13 100%);
+    box-shadow:
+    0 0 30px #16c784,
+    0 0 80px rgba(22,199,132,.5),
+    inset -35px -25px 60px rgba(0,0,0,.6);
+    animation:rotateEarth 12s linear infinite;
+    position:relative;
+}
+
+.earth::after{
+    content:"INDIA";
+    position:absolute;
+    color:white;
+    font-weight:bold;
+    font-size:22px;
+    top:48%;
+    left:40%;
+    text-shadow:0 0 15px #fff;
+}
+
+.orbit{
+    position:absolute;
+    width:400px;
+    height:120px;
+    border:1px solid var(--green);
+    border-radius:50%;
+    transform:rotate(-20deg);
+    animation:orbit 5s linear infinite;
+}
+
+@keyframes rotateEarth{
+    from{transform:rotate(0)}
+    to{transform:rotate(360deg)}
+}
+
+@keyframes orbit{
+    from{transform:rotate(-20deg)}
+    to{transform:rotate(340deg)}
+}
+
+/* SECTIONS */
+
+section{
+    padding:90px 8%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.title h2{
+    font-size:42px;
+    margin-bottom:15px;
+}
+
+.title span{
+    color:var(--green);
+}
+
+.title p{
+    color:var(--muted);
+    max-width:750px;
+    margin:auto;
+    line-height:1.7;
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.stat{
+    background:var(--card);
+    border:1px solid rgba(22,199,132,.2);
+    padding:30px;
+    border-radius:20px;
+    text-align:center;
+    transition:.3s;
+}
+
+.stat:hover{
+    transform:translateY(-8px);
+    border-color:var(--green);
+}
+
+.stat h3{
+    font-size:40px;
+    color:var(--green);
+}
+
+.stat p{
+    color:var(--muted);
+    margin-top:10px;
+}
+
+/* IT ROLE */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.08);
+    padding:28px;
+    border-radius:20px;
+    transition:.4s;
+}
+
+.card:hover{
+    transform:translateY(-10px) scale(1.02);
+    border-color:var(--green);
+    box-shadow:0 15px 40px rgba(22,199,132,.12);
+}
+
+.card .icon{
+    font-size:40px;
+}
+
+.card h3{
+    margin:15px 0;
+}
+
+.card p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* SDG GRID */
+
+.sdg-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:12px;
+}
+
+.sdg{
+    min-height:130px;
+    padding:16px;
+    border-radius:16px;
+    background:var(--card);
+    border:1px solid rgba(255,255,255,.08);
+    cursor:pointer;
+    transition:.3s;
+}
+
+.sdg:hover{
+    transform:translateY(-7px);
+    border-color:var(--green);
+}
+
+.sdg strong{
+    color:var(--green);
+    font-size:13px;
+}
+
+.sdg h4{
+    margin-top:12px;
+    font-size:15px;
+}
+
+/* INDIA */
+
+.india{
+    background:linear-gradient(
+        135deg,
+        rgba(22,199,132,.15),
+        rgba(33,150,243,.12)
+    );
+    border-radius:30px;
+}
+
+.india-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.india-card{
+    background:var(--card);
+    padding:30px;
+    border-radius:20px;
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.india-card h3{
+    color:var(--green);
+    margin-bottom:12px;
+}
+
+.india-card p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* CHART */
+
+.chart-box{
+    max-width:800px;
+    margin:auto;
+    background:var(--card);
+    padding:35px;
+    border-radius:25px;
+}
+
+.bar{
+    margin:22px 0;
+}
+
+.bar-title{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:8px;
+}
+
+.bar-bg{
+    height:12px;
+    background:#20372d;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.bar-fill{
+    height:100%;
+    width:0;
+    background:linear-gradient(90deg,var(--green),var(--blue));
+    border-radius:20px;
+    transition:2s;
+}
+
+/* ROADMAP */
+
+.timeline{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.step{
+    padding:25px;
+    background:var(--card);
+    border-left:4px solid var(--green);
+    border-radius:10px;
+}
+
+.step span{
+    color:var(--green);
+    font-weight:bold;
+}
+
+.step p{
+    color:var(--muted);
+    margin-top:10px;
+    line-height:1.6;
+}
+
+/* CTA */
+
+.cta{
+    text-align:center;
+    padding:60px 20px;
+    background:linear-gradient(
+        135deg,
+        #08754e,
+        #075083
+    );
+    border-radius:30px;
+}
+
+.cta h2{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.cta p{
+    max-width:700px;
+    margin:auto;
+    line-height:1.7;
+}
+
+/* MODAL */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.8);
+    z-index:2000;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.modal-content{
+    background:var(--card);
+    max-width:550px;
+    padding:35px;
+    border-radius:25px;
+    border:1px solid var(--green);
+}
+
+.close{
+    float:right;
+    font-size:28px;
+    cursor:pointer;
+    color:var(--muted);
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:40px;
+    border-top:1px solid rgba(255,255,255,.1);
+    color:var(--muted);
+}
+
+/* TOP BUTTON */
+
+.top{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    border:none;
+    background:var(--green);
+    cursor:pointer;
+    font-size:20px;
+    z-index:100;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+    nav ul{
+        display:none;
+    }
+
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero p{
+        margin:auto;
+    }
+
+    .buttons{
+        justify-content:center;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .cards{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .sdg-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .timeline{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:600px){
+
+    section{
+        padding:65px 5%;
+    }
+
+    .stats,
+    .cards,
+    .india-grid,
+    .timeline{
+        grid-template-columns:1fr;
+    }
+
+    .sdg-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .earth{
+        width:250px;
+        height:250px;
+    }
+
+    .orbit{
+        width:300px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<!-- NAVIGATION -->
+
+<nav>
+
+<div class="logo">
+🌍 <span>IT × SDG</span> India
+</div>
+
+<ul>
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#role">IT Role</a></li>
+<li><a href="#sdgs">17 SDGs</a></li>
+<li><a href="#india">India</a></li>
+<li><a href="#roadmap">Roadmap</a></li>
+</ul>
+
+<button class="theme" onclick="toggleTheme()">
+🌙
+</button>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div>
+
+<div class="badge">
+🇮🇳 India • Technology • Sustainability
+</div>
+
+<h1>
+Role of <span>Information Technology</span> in Achieving SDGs
+</h1>
+
+<p>
+Information Technology is one of the most powerful tools for achieving
+the Sustainable Development Goals in India. From AI and cloud computing
+to digital healthcare, education, agriculture and financial inclusion,
+technology can accelerate sustainable development.
+</p>
+
+<div class="buttons">
+
+<a href="#role" class="btn primary">
+Explore IT's Role →
+</a>
+
+<a href="#sdgs" class="btn secondary">
+Explore 17 SDGs
+</a>
+
+</div>
+
+</div>
+
+
+<div class="earth-box">
+
+<div class="orbit"></div>
+
+<div class="earth"></div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="title">
+
+<h2>What are <span>SDGs?</span></h2>
+
+<p>
+The Sustainable Development Goals are 17 global goals adopted by
+United Nations countries to create a better and more sustainable
+future by 2030.
+</p>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+<h3>17</h3>
+<p>Sustainable Development Goals</p>
+</div>
+
+<div class="stat">
+<h3>169</h3>
+<p>SDG Targets</p>
+</div>
+
+<div class="stat">
+<h3>2030</h3>
+<p>Target Year</p>
+</div>
+
+<div class="stat">
+<h3>1</h3>
+<p>Shared Global Vision</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ROLE OF IT -->
+
+<section id="role">
+
+<div class="title">
+
+<h2>How <span>IT</span> Helps SDGs</h2>
+
+<p>
+Information Technology connects people, information, services and
+resources. It can make development faster, smarter and more inclusive.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">🤖</div>
+<h3>Artificial Intelligence</h3>
+<p>
+AI can analyse large amounts of data and support healthcare,
+agriculture, education, climate prediction and smart cities.
+</p>
+</div>
+
+
+<div class="card">
+<div class="icon">📊</div>
+<h3>Big Data & Analytics</h3>
+<p>
+Data analytics helps governments understand problems, identify
+patterns and make evidence-based decisions.
+</p>
+</div>
+
+
+<div class="card">
+<div class="icon">☁️</div>
+<h3>Cloud Computing</h3>
+<p>
+Cloud technology allows organisations to store and access information
+and services at large scale.
+</p>
+</div>
+
+
+<div class="card">
+<div class="icon">📱</div>
+<h3>Digital Inclusion</h3>
+<p>
+Mobile applications and online services can connect people with
+education, banking, government services and information.
+</p>
+</div>
+
+
+<div class="card">
+<div class="icon">🌱</div>
+<h3>Smart Agriculture</h3>
+<p>
+IoT sensors, satellite data and AI can help farmers monitor crops,
+water and weather conditions.
+</p>
+</div>
+
+
+<div class="card">
+<div class="icon">⚡</div>
+<h3>Green Technology</h3>
+<p>
+Smart energy systems and digital monitoring can reduce resource
+consumption and support clean energy.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- 17 SDGS -->
+
+<section id="sdgs">
+
+<div class="title">
+
+<h2>The <span>17 SDGs</span> & Technology</h2>
+
+<p>
+Click any SDG to understand how Information Technology can contribute.
+</p>
+
+</div>
+
+<div class="sdg-grid" id="sdgGrid"></div>
+
+</section>
+
+
+<!-- INDIA -->
+
+<section id="india">
+
+<div class="india">
+
+<div class="title">
+
+<h2>Technology in <span>India</span></h2>
+
+<p>
+India has developed large-scale digital platforms that demonstrate
+how technology can support development.
+</p>
+
+</div>
+
+
+<div class="india-grid">
+
+<div class="india-card">
+<h3>💳 UPI</h3>
+
+<p>
+Unified Payments Interface has transformed digital payments and
+supports financial inclusion by allowing fast digital transactions.
+</p>
+</div>
+
+
+<div class="india-card">
+<h3>🏥 CoWIN & Digital Health</h3>
+
+<p>
+Digital health platforms demonstrate how technology can coordinate
+health services and provide citizens with digital access.
+</p>
+</div>
+
+
+<div class="india-card">
+<h3>🎓 DIKSHA</h3>
+
+<p>
+Digital education platforms provide learning resources to students
+and teachers and support education beyond the classroom.
+</p>
+</div>
+
+
+<div class="india-card">
+<h3>🌾 AgriTech</h3>
+
+<p>
+Satellite technology, IoT, weather information and data analytics
+can improve agricultural planning and productivity.
+</p>
+</div>
+
+
+<div class="india-card">
+<h3>🏙️ Smart Cities</h3>
+
+<p>
+Sensors, GIS, digital infrastructure and analytics can help cities
+manage transport, water, waste and public services.
+</p>
+</div>
+
+
+<div class="india-card">
+<h3>🛰️ Remote Sensing</h3>
+
+<p>
+Satellite data can support environmental monitoring, agriculture,
+disaster management and natural-resource planning.
+</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- IMPACT CHART -->
+
+<section>
+
+<div class="title">
+
+<h2>IT's <span>Impact Areas</span></h2>
+
+<p>
+An illustrative framework showing major areas where technology can
+support sustainable development.
+</p>
+
+</div>
+
+
+<div class="chart-box">
+
+<div class="bar">
+
+<div class="bar-title">
+<span>Digital Connectivity</span>
+<strong>92%</strong>
+</div>
+
+<div class="bar-bg">
+<div class="bar-fill" data-width="92%"></div>
+</div>
+
+</div>
+
+
+<div class="bar">
+
+<div class="bar-title">
+<span>Digital Education</span>
+<strong>86%</strong>
+</div>
+
+<div class="bar-bg">
+<div class="bar-fill" data-width="86%"></div>
+</div>
+
+</div>
+
+
+<div class="bar">
+
+<div class="bar-title">
+<span>Digital Healthcare</span>
+<strong>82%</strong>
+</div>
+
+<div class="bar-bg">
+<div class="bar-fill" data-width="82%"></div>
+</div>
+
+</div>
+
+
+<div class="bar">
+
+<div class="bar-title">
+<span>Smart Agriculture</span>
+<strong>75%</strong>
+</div>
+
+<div class="bar-bg">
+<div class="bar-fill" data-width="75%"></div>
+</div>
+
+</div>
+
+
+<div class="bar">
+
+<div class="bar-title">
+<span>Green Technology</span>
+<strong>88%</strong>
+</div>
+
+<div class="bar-bg">
+<div class="bar-fill" data-width="88%"></div>
+</div>
+
+</div>
+
+<p style="color:var(--muted);margin-top:20px;">
+*Illustrative project visualization, not official national performance data.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ROADMAP -->
+
+<section id="roadmap">
+
+<div class="title">
+
+<h2>Roadmap to <span>2030</span></h2>
+
+<p>
+India can maximise the benefits of digital technology by focusing
+on access, skills, innovation and responsible implementation.
+</p>
+
+</div>
+
+
+<div class="timeline">
+
+<div class="step">
+<span>01 • CONNECT</span>
+<p>
+Expand affordable and reliable internet and digital infrastructure.
+</p>
+</div>
+
+
+<div class="step">
+<span>02 • EDUCATE</span>
+<p>
+Develop digital literacy, coding, AI and cybersecurity skills.
+</p>
+</div>
+
+
+<div class="step">
+<span>03 • INNOVATE</span>
+<p>
+Use AI, IoT, cloud computing and data analytics responsibly.
+</p>
+</div>
+
+
+<div class="step">
+<span>04 • MEASURE</span>
+<p>
+Use data to measure progress and continuously improve development.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section>
+
+<div class="cta">
+
+<h2>Technology for a Sustainable India 🇮🇳</h2>
+
+<p>
+Information Technology can become a powerful accelerator for
+sustainable development when it is affordable, secure, ethical,
+accessible and designed around real human needs.
+</p>
+
+<br>
+
+<button class="btn primary" onclick="window.print()">
+📄 Print / Save as PDF
+</button>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<p>
+© 2026 IT × SDGs India | Educational Project
+</p>
+
+<p style="margin-top:10px;">
+Information Technology • Sustainability • Innovation • India
+</p>
+
+</footer>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">×</span>
+
+<div id="modalText"></div>
+
+</div>
+
+</div>
+
+
+<button class="top" onclick="window.scrollTo(0,0)">
+↑
+</button>
+
+
+<script>
+
+/* SDG DATA */
+
+const sdgs = [
+
+["01","No Poverty","Digital financial services and welfare platforms can improve access to support."],
+
+["02","Zero Hunger","AI, IoT and agricultural data can improve food production and distribution."],
+
+["03","Good Health","Telemedicine, electronic health records and digital health services can improve healthcare."],
+
+["04","Quality Education","EdTech and digital learning platforms can expand access to education."],
+
+["05","Gender Equality","Digital access and skills can create new educational and economic opportunities."],
+
+["06","Clean Water","Sensors and data systems can monitor water quality and usage."],
+
+["07","Clean Energy","Smart grids and digital monitoring can improve renewable-energy systems."],
+
+["08","Decent Work","Digital platforms and skills can connect people to employment and entrepreneurship."],
+
+["09","Industry & Innovation","AI, cloud, IoT and connectivity can accelerate innovation."],
+
+["10","Reduced Inequalities","Accessible digital services can help underserved communities."],
+
+["11","Sustainable Cities","Smart-city technologies can improve transport, waste and urban planning."],
+
+["12","Responsible Consumption","Digital tracking can reduce waste and improve resource efficiency."],
+
+["13","Climate Action","Satellite data and AI can monitor climate and environmental changes."],
+
+["14","Life Below Water","Technology can monitor marine pollution and ecosystems."],
+
+["15","Life on Land","GIS, satellites and AI can support forests and biodiversity."],
+
+["16","Peace & Justice","Secure digital systems can improve transparency and public services."],
+
+["17","Partnerships","Digital platforms can connect governments, organisations and communities."]
+
+];
+
+
+const grid = document.getElementById("sdgGrid");
+
+
+sdgs.forEach(goal => {
+
+const card = document.createElement("div");
+
+card.className = "sdg";
+
+card.innerHTML = `
+
+<strong>SDG ${goal[0]}</strong>
+
+<h4>${goal[1]}</h4>
+
+<p style="color:var(--muted);font-size:12px;margin-top:8px;">
+Click to explore →
+</p>
+
+`;
+
+card.onclick = () => openModal(goal);
+
+grid.appendChild(card);
+
+});
+
+
+/* MODAL */
+
+function openModal(goal){
+
+document.getElementById("modalText").innerHTML = `
+
+<h2 style="color:var(--green);margin-bottom:15px;">
+SDG ${goal[0]} — ${goal[1]}
+</h2>
+
+<p style="color:var(--muted);line-height:1.8;">
+${goal[2]}
+</p>
+
+`;
+
+document.getElementById("modal").style.display="flex";
+
+}
+
+
+function closeModal(){
+
+document.getElementById("modal").style.display="none";
+
+}
+
+
+/* DARK / LIGHT MODE */
+
+function toggleTheme(){
+
+document.body.classList.toggle("light");
+
+}
+
+
+/* PARTICLES */
+
+const canvas = document.getElementById("particles");
+
+const ctx = canvas.getContext("2d");
+
+let particles=[];
+
+function resize(){
+
+canvas.width=window.innerWidth;
+
+canvas.height=window.innerHeight;
+
+}
+
+resize();
+
+window.addEventListener("resize",resize);
+
+
+for(let i=0;i<80;i++){
+
+particles.push({
+
+x:Math.random()*innerWidth,
+
+y:Math.random()*innerHeight,
+
+r:Math.random()*2+0.5,
+
+dx:(Math.random()-.5)*.5,
+
+dy:(Math.random()-.5)*.5
+
+});
+
+}
+
+
+function animateParticles(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+ctx.fillStyle="#16c784";
+
+particles.forEach(p=>{
+
+p.x+=p.dx;
+
+p.y+=p.dy;
+
+if(p.x<0||p.x>canvas.width)p.dx*=-1;
+
+if(p.y<0||p.y>canvas.height)p.dy*=-1;
+
+ctx.beginPath();
+
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+
+ctx.fill();
+
+});
+
+requestAnimationFrame(animateParticles);
+
+}
+
+animateParticles();
+
+
+/* ANIMATED BARS */
+
+const bars=document.querySelectorAll(".bar-fill");
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.width=entry.target.dataset.width;
+
+}
+
+});
+
+},{threshold:.5});
+
+
+bars.forEach(bar=>observer.observe(bar));
+
+
+/* CLOSE MODAL */
+
+document.getElementById("modal").addEventListener("click",function(e){
+
+if(e.target===this){
+
+closeModal();
+
+}
+
+});
+
+</script>
+
+</body>
+</html>
